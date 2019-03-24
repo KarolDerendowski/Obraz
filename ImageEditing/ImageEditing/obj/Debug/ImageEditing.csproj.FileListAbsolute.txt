@@ -12,3 +12,17 @@ D:\PŁ\Zajęcia\VIII sem (inf)\Przetwarzanie obrazow\ImageEditing\ImageEditing\o
 D:\PŁ\Zajęcia\VIII sem (inf)\Przetwarzanie obrazow\ImageEditing\ImageEditing\obj\Debug\ImageEditing.csproj.CoreCompileInputs.cache
 D:\PŁ\Zajęcia\VIII sem (inf)\Przetwarzanie obrazow\ImageEditing\ImageEditing\obj\Debug\ImageEditing.exe
 D:\PŁ\Zajęcia\VIII sem (inf)\Przetwarzanie obrazow\ImageEditing\ImageEditing\obj\Debug\ImageEditing.pdb
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\bin\Debug\ImageEditing.exe.config
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\bin\Debug\ImageEditing.exe
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\bin\Debug\ImageEditing.pdb
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\obj\Debug\ImageEditing.csprojAssemblyReference.cache
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\obj\Debug\MainWindow.baml
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\obj\Debug\MainWindow.g.cs
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\obj\Debug\App.g.cs
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\obj\Debug\ImageEditing_MarkupCompile.cache
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\obj\Debug\ImageEditing.g.resources
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\obj\Debug\ImageEditing.Properties.Resources.resources
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\obj\Debug\ImageEditing.csproj.GenerateResource.cache
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\obj\Debug\ImageEditing.csproj.CoreCompileInputs.cache
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\obj\Debug\ImageEditing.exe
+C:\Users\karol.derendowski\Desktop\ImageEditing\ImageEditing\obj\Debug\ImageEditing.pdb
