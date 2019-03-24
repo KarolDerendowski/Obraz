@@ -42,10 +42,17 @@ namespace ImageEditing
             {
                 for (int y = 0; y < height; ++y)
                 {
+                    //int i = ( (-1) * width * y + ((width-1) * height) ) + x;
                     int i = width * y + x;
-                    red = buffer[3 * i];
+                    /*red = buffer[3 * i];
                     green = buffer[3 * i + 1];
-                    blue = buffer[3 * i + 2];
+                    blue = buffer[3 * i + 2];*/
+                    /*red = buffer[3 * ((-1) * (i - x) + ((width - 1) * height)) + (3 * x)];
+                    green = buffer[3 * ((-1) * (i - x) + ((width - 1) * height)) + 1 + (3 * x)];
+                    blue = buffer[3 * ((-1) * (i - x) + ((width - 1) * height)) + 2 + (3 * x)];*/
+                    blue = buffer[3*((-1) * (i - x) + ((width - 1) * height))+(3*x)];
+                    green = buffer[3*((-1) * (i - x) + ((width - 1) * height))+1 + (3 * x)];
+                    red = buffer[3*((-1) * (i - x) + ((width - 1) * height))+2 + (3 * x)];
                     alpha = 255;
                     /* ( y % 8 == 0 || (y-1) % 8 == 0 || (y-2) % 8 == 0 || (y-3) % 8 == 0 )
                     {
