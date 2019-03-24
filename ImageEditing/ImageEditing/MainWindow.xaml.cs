@@ -71,7 +71,7 @@ namespace ImageEditing
                     pixels[i] = (uint)((alpha << 24) + (red << 16) + (green << 8) + blue);
                 }
             }
-
+            /*pojsafpoijfase*/
 
             addBrightness(pixels, width, height, 0);
 
