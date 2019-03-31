@@ -2,10 +2,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:oxy="http://oxyplot.org/wpf"
-        Title="Window1" Height="613.53" Width="1399.755">
+        Title="Window1" Height="741.53" Width="1399.755">
     <Grid>
-        <Image x:Name="MainImage" Width="512" Height="512" Margin="23,36,857,35"/>
-        <Image x:Name="MainImage2" Width="512" Height="512" Margin="545,36,335,35"/>
+        <Image x:Name="MainImage" Width="512" Height="512" Margin="23,24,857,176"/>
+        <Image x:Name="MainImage2" Width="512" Height="512" Margin="545,24,335,176"/>
         <Button Content="Załaduj obrazek" HorizontalAlignment="Left" Margin="1145,36,0,0" VerticalAlignment="Top" Width="220" Height="24" Click="Button_Click"/>
         <Button Content="test button" HorizontalAlignment="Left" Margin="1277,6,0,0" VerticalAlignment="Top" Width="105" Height="25" Click="Button_Click_1"/>
         <Slider x:Name="slider" HorizontalAlignment="Left" Margin="1145,65,0,0" VerticalAlignment="Top" Height="22" Width="220" Minimum="-255" Maximum="255" ValueChanged="Slider_ValueChanged" LargeChange="2" SmallChange="1"/>
@@ -24,14 +24,21 @@
         <CheckBox x:Name="negatyw_checkBox" Content="Negatyw" HorizontalAlignment="Left" Margin="1145,119,0,0" VerticalAlignment="Top" Width="220" Click="CheckBox_Clicked"/>
         <TextBlock HorizontalAlignment="Left" Margin="1062,65,0,0" TextWrapping="Wrap" Text="Jasność" VerticalAlignment="Top" Width="68" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Left" Margin="1062,92,0,0" TextWrapping="Wrap" Text="Kontrast" VerticalAlignment="Top" RenderTransformOrigin="0.467,1.253" Width="68" TextAlignment="Center"/>
-        <oxy:Plot x:Name="PlotCopy" Title="{Binding Title}" Width="512" Margin="23,469,857,15">
+        <oxy:Plot x:Name="PlotOriginal" Width="512" Margin="23,541,857,15" Background="White">
             <oxy:Plot.Series>
-                <oxy:LineSeries ItemsSource="{Binding Points}"/>
+                <oxy:LineSeries ItemsSource="{Binding Points1}" Color="Red"/>
+                <oxy:LineSeries ItemsSource="{Binding Points2}" Color="Lime"/>
+                <oxy:LineSeries ItemsSource="{Binding Points3}" Color="Blue"/>
+                <oxy:LineSeries ItemsSource="{Binding Points4}" Color="Black"/>
             </oxy:Plot.Series>
         </oxy:Plot>
-        <oxy:Plot x:Name="PlotOriginal" Title="{Binding Title}" Width="512" Height="100" Margin="545,476,335,8">
-            <oxy:LineSeries ItemsSource="{Binding Points}"/>
+        <oxy:Plot x:Name="PlotCopy" Width="512" Margin="545,541,335,15">
+            <oxy:LineSeries ItemsSource="{Binding Points5}" Color="Red"/>
+            <oxy:LineSeries ItemsSource="{Binding Points6}" Color="Lime"/>
+            <oxy:LineSeries ItemsSource="{Binding Points7}" Color="Blue"/>
+            <oxy:LineSeries ItemsSource="{Binding Points8}" Color="Black"/>
         </oxy:Plot>
+        <CheckBox x:Name="gestosc_checkBox" Content="Gestosc prawdopodobienstwa H1" HorizontalAlignment="Left" Margin="1145,140,0,0" VerticalAlignment="Top" Width="220" Click="Gestosc_checkBox_Clicked"/>
     </Grid>
 </Window>
     

@@ -20,8 +20,9 @@ namespace ImageEditing
         uint[] pixelsOriginal;
         uint[] pixelsCopy;
         uint[] pixelsBuffer;
+        
         Histogram histOriginal;
-        Histogram histCopy;
+        Histogram2 histCopy;
 
         WriteableBitmap bitmap2;
 
@@ -37,7 +38,9 @@ namespace ImageEditing
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            histOriginal.obliczHistogram();
+            histCopy = new Histogram2(pixelsCopy);
+            histCopy.obliczHistogram();
+            PlotCopy.DataContext = histCopy;
         }
 
         private void wpiszDane(int width, int height, string bufor)
@@ -90,7 +93,11 @@ namespace ImageEditing
             changeBrightness(0);
 
             histOriginal = new Histogram(pixelsOriginal);
-            histCopy = new Histogram(pixelsCopy);
+            histOriginal.obliczHistogram();
+            PlotOriginal.DataContext = histOriginal;
+            histCopy = new Histogram2(pixelsCopy);
+            histCopy.obliczHistogram();
+            PlotCopy.DataContext = histCopy;
 
             obrazekZaladowany = true;
         }
@@ -253,6 +260,56 @@ namespace ImageEditing
             bitmap2.WritePixels(new Int32Rect(0, 0, width, height), pixelsCopy, width * 4, 0);
         }
 
+        void gestoscPrawdH1()
+        {
+            int red;
+            int green;
+            int blue;
+            int alpha;
+            for (int x = 0; x < width; ++x)
+            {
+                for (int y = 0; y < height; ++y)
+                {
+                    int i = width * y + x;
+
+                    int gmin = 0, gmax = 50, newValue = 0;
+                    for (int j = 0; j < (red = (int)((pixelsCopy[i] >> 16) & 0x000000FF)); j++)
+                        newValue += histCopy.wykresR[j];
+                    if (red != 0)
+                        red = (newValue / red) * (gmax - gmin) + gmin;
+                    newValue = 0;
+                    if (red > 255)
+                        red = 255;
+                    else if (red < 0)
+                        red = 0;
+
+                    for (int j = 0; j < (green = (int)((pixelsCopy[i] >> 16) & 0x000000FF)); j++)
+                        newValue += histCopy.wykresR[j];
+                    if (green != 0)
+                        green = (newValue / green) * (gmax - gmin) + gmin;
+                    newValue = 0;
+                    if (green > 255)
+                        green = 255;
+                    else if (green < 0)
+                        green = 0;
+
+                    for (int j = 0; j < (blue = (int)((pixelsCopy[i] >> 16) & 0x000000FF)); j++)
+                        newValue += histCopy.wykresR[j];
+                    if (blue != 0)
+                        blue = (newValue / blue) * (gmax - gmin) + gmin;
+                    newValue = 0;
+                    if (blue > 255)
+                        blue = 255;
+                    else if (blue < 0)
+                        blue = 0;
+
+                    alpha = (int)((pixelsCopy[i] >> 24) & 0x000000FF);
+                    pixelsCopy[i] = (uint)((alpha << 24) + (red << 16) + (green << 8) + blue);
+                }
+            }
+            bitmap2.WritePixels(new Int32Rect(0, 0, width, height), pixelsCopy, width * 4, 0);
+        }
+
         void imageChanged()
         {
             for (int i = 0; i < pixelsOriginal.Length - 1; i++)
@@ -262,6 +319,11 @@ namespace ImageEditing
             changeContrast((int)slider_2.Value);
             if (negatyw_checkBox.IsChecked == true)
                 negatyw();
+            if (gestosc_checkBox.IsChecked == true)
+                gestoscPrawdH1();
+            histCopy = new Histogram2(pixelsCopy);
+            histCopy.obliczHistogram();
+            PlotCopy.DataContext = histCopy;
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -391,6 +453,16 @@ namespace ImageEditing
         }
 
         private void CheckBox_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (obrazekZaladowany)
+            {
+                for (int i = 0; i < pixelsOriginal.Length - 1; i++)
+                    pixelsCopy[i] = pixelsOriginal[i];
+                imageChanged();
+            }
+        }
+
+        private void Gestosc_checkBox_Clicked(object sender, RoutedEventArgs e)
         {
             if (obrazekZaladowany)
             {

@@ -7,7 +7,7 @@ using OxyPlot;
 
 namespace ImageEditing
 {
-    class Histogram
+    class Histogram2
     {
         public int[] wykresR = new int[256];
         public int[] wykresG = new int[256];
@@ -15,28 +15,28 @@ namespace ImageEditing
         public int[] wykresX = new int[256];
         public uint[] obrazPiksele;
 
-        public Histogram(uint[] obrazPiksele)
+        public Histogram2(uint[] obrazPiksele)
         {
             this.obrazPiksele = obrazPiksele;
-            this.Points1 = new List<DataPoint> { };
-            this.Points2 = new List<DataPoint> { };
-            this.Points3 = new List<DataPoint> { };
-            this.Points4 = new List<DataPoint> { };
+            this.Points5 = new List<DataPoint> { };
+            this.Points6 = new List<DataPoint> { };
+            this.Points7 = new List<DataPoint> { };
+            this.Points8 = new List<DataPoint> { };
         }
 
         public string Title { get; private set; }
 
-        public IList<DataPoint> Points1 { get; private set; }
-        public IList<DataPoint> Points2 { get; private set; }
-        public IList<DataPoint> Points3 { get; private set; }
-        public IList<DataPoint> Points4 { get; private set; }
+        public IList<DataPoint> Points5 { get; private set; }
+        public IList<DataPoint> Points6 { get; private set; }
+        public IList<DataPoint> Points7 { get; private set; }
+        public IList<DataPoint> Points8 { get; private set; }
 
         public void obliczHistogram()
         {
-            Points1.Clear();
-            Points2.Clear();
-            Points3.Clear();
-            Points4.Clear();
+            Points5.Clear();
+            Points6.Clear();
+            Points7.Clear();
+            Points8.Clear();
             for (int i = 0; i < 256; i++)
             {
                 wykresR[i] = 0;
@@ -49,14 +49,14 @@ namespace ImageEditing
                 wykresR[((obrazPiksele[i] >> 16) & 0x000000FF)]++;
                 wykresG[((obrazPiksele[i] >> 8) & 0x000000FF)]++;
                 wykresB[(obrazPiksele[i] & 0x000000FF)]++;
-                wykresX[(((obrazPiksele[i] >> 16) & 0x000000FF) + ((obrazPiksele[i] >> 8) & 0x000000FF) + (obrazPiksele[i] & 0x000000FF)) / 3]++;
+                wykresX[(((obrazPiksele[i] >> 16) & 0x000000FF)+ ((obrazPiksele[i] >> 8) & 0x000000FF)+ (obrazPiksele[i] & 0x000000FF))/3]++;
             }
             for (int i = 0; i < 256; i++)
             {
-                Points1.Add(new DataPoint(i, wykresR[i]));
-                Points2.Add(new DataPoint(i, wykresG[i]));
-                Points3.Add(new DataPoint(i, wykresB[i]));
-                Points4.Add(new DataPoint(i, wykresX[i]));
+                Points5.Add(new DataPoint(i, wykresR[i]));
+                Points6.Add(new DataPoint(i, wykresG[i]));
+                Points7.Add(new DataPoint(i, wykresB[i]));
+                Points8.Add(new DataPoint(i, wykresX[i]));
             }
         }
     }
